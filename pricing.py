@@ -12,6 +12,6 @@ def discount(amount, code):
     return round(amount * (1 - rates.get(code, 0)), 2)
 
 
-def shipping(amount):
-    """Free shipping from 50 EUR, otherwise a flat 4.90."""
-    return 0.0 if amount >= 50 else 4.90
+def shipping(amount, item_count=0):
+    """Free shipping from 50 EUR or 5+ items, otherwise a flat 4.90."""
+    return 0.0 if amount >= 50 or item_count >= 5 else 4.90

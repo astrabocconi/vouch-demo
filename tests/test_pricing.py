@@ -18,5 +18,10 @@ def test_free_shipping_threshold():
     assert shipping(49.99) == 4.90
 
 
+def test_free_shipping_item_count():
+    assert shipping(10, item_count=5) == 0.0
+    assert shipping(10, item_count=4) == 4.90
+
+
 def test_discount_vip30():
     assert discount(200, "VIP30") == 140.0
