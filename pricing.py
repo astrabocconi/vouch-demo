@@ -12,6 +12,7 @@ def discount(amount, code):
     return round(amount * (1 - rates.get(code, 0)), 2)
 
 
-def shipping(amount, item_count=0):
-    """Free shipping from 50 EUR or 5+ items, otherwise a flat 4.90."""
-    return 0.0 if amount >= 50 or item_count >= 5 else 4.90
+def shipping(amount, item_count=0, gift_wrap=False):
+    """Free shipping from 50 EUR or 5+ items, otherwise a flat 4.90. Gift wrap adds 2.50."""
+    base = 0.0 if amount >= 50 or item_count >= 5 else 4.90
+    return round(base + 2.50, 2) if gift_wrap else base
