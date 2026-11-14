@@ -20,3 +20,7 @@ def test_free_shipping_threshold():
 
 def test_discount_vip30():
     assert discount(200, "VIP30") == 140.0
+
+
+def test_discount_gift25():
+    assert discount(200, "GIFT25") == 150.0
