@@ -9,6 +9,11 @@ def test_discount_known_code():
     assert discount(100, "WELCOME10") == 90.0
 
 
+def test_discount_code_case_insensitive():
+    assert discount(100, "welcome10") == 90.0
+    assert discount(100, "Vip20") == 80.0
+
+
 def test_discount_unknown_code():
     assert discount(100, "NOPE") == 100
 
