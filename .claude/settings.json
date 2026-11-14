@@ -1,0 +1,95 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" prompt --lanes; exit 0",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" pre --lanes; exit 0",
+            "timeout": 300,
+            "statusMessage": "Lanes: coordinating with teammates…"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" read --lanes; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" permission --lanes; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" post --lanes; exit 0",
+            "timeout": 40
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" start --lanes; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" stop --lanes; exit 0",
+            "timeout": 90
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --no-warnings \"${CLAUDE_PROJECT_DIR}/.lanes/hook.cjs\" end --lanes; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
