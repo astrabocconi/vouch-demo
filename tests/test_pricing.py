@@ -27,6 +27,10 @@ def test_discount_vip30():
     assert discount(200, "VIP30") == 140.0
 
 
+def test_discount_back2school():
+    assert discount(100, "BACK2SCHOOL") == 88.0
+
+
 def test_discount_gift25():
     assert discount(200, "GIFT25") == 150.0
 
