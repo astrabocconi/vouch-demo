@@ -29,3 +29,8 @@ def test_discount_vip30():
 
 def test_discount_gift25():
     assert discount(200, "GIFT25") == 150.0
+
+
+def test_shipping_gift_wrap():
+    assert shipping(10, gift_wrap=True) == 7.40
+    assert shipping(50, gift_wrap=True) == 2.50
